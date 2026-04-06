@@ -2,7 +2,6 @@ package wevioo.example.taskmanagement.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
 
 @Entity
 @Table(name = "users")

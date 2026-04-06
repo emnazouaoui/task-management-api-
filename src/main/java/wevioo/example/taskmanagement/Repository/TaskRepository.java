@@ -1,12 +1,9 @@
 package wevioo.example.taskmanagement.Repository;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import wevioo.example.taskmanagement.entity.Task;
-import wevioo.example.taskmanagement.entity.TaskStatus;
 
 import java.util.List;
 
@@ -21,6 +18,5 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     """, nativeQuery = true)
 
     List<Task> searchTasks(@Param("keyword") String keyword);
-    //Page<Task> searchTasks(TaskStatus status, String title, String description, Pageable pageable);
-    //Page<Task> searchTasks(String status, String title, String description, Pageable pageable);
+
 }

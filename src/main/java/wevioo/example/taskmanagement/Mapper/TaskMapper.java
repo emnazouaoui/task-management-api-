@@ -25,20 +25,6 @@ public class TaskMapper {
     }
 
 
-//    public Task toEntity(TaskDTO dto) {
-//        if (dto == null) return null;
-//        Task task = new Task();
-//        task.setId(dto.getId());
-//        task.setTitle(dto.getTitle());
-//        task.setDescription(dto.getDescription());
-//        task.setStatus(dto.getStatus());
-//        if (dto.getAssignedUserId() != null) {
-//            task.setAssignedUser(dto.getAssignedUserId().getId());
-//        }
-//
-//        return task;
-//    }
-
     public List<TaskDTO> toDTOList(List<Task> tasks) {
         return tasks.stream()
                 .map(this::toDTO)

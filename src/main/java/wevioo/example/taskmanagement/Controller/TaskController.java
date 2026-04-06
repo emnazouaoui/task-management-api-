@@ -37,12 +37,6 @@ public class TaskController {
         return taskService.getTasksWithPagination(page, size,sortBy);
     }
 
-    //    // Get all tasks
-    //    @GetMapping
-    //    public List<TaskDTO> getAllTasks() {
-    //       // System.out.println("Working right");
-    //        return taskService.getAllTasks(); //3malha bel repository fil video 23:20
-    //    }
 
     // Create tasks
     @PostMapping
@@ -87,19 +81,8 @@ public class TaskController {
         return taskService.assignTask(taskId, userId);
     }
 
-    // Search tasks by status, title and description
-//    @GetMapping("/search")
-//    public Page<TaskDTO> searchTasks(
-//            @RequestParam(required = false) String status,
-//            @RequestParam(required = false) String title,
-//            @RequestParam(required = false) String description,
-//            @RequestParam(defaultValue = "0") int page,
-//            @RequestParam(defaultValue = "5") int size) {
-//
-//        return taskService.searchTasks(status, title, description, page, size);
-//    }
 
-    // Search tasks by status, title and description
+    // Search tasks by keyword
     @GetMapping("/search")
     @Operation(summary = "Search tasks", description = "Get tasks with filter by keyword")
     public List<TaskDTO> searchTasks(@RequestParam String keyword) {

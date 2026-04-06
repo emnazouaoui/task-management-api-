@@ -10,11 +10,9 @@ import org.springframework.stereotype.Service;
 import wevioo.example.taskmanagement.DTO.UserDTO;
 import wevioo.example.taskmanagement.Mapper.UserMapper;
 import wevioo.example.taskmanagement.Repository.UserRepository;
-import wevioo.example.taskmanagement.Service.TaskService;
 import wevioo.example.taskmanagement.Service.UserService;
 import wevioo.example.taskmanagement.entity.User;
 
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -35,7 +33,6 @@ public class UserServiceImpl implements UserService {
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         User savedUser = userRepository.save(user);
-        //return mapToDTO(savedUser);
         logger.info("user created successfully");
         return userMapper.mapToDTO(savedUser);
     }
@@ -49,13 +46,6 @@ public class UserServiceImpl implements UserService {
                 .map(userMapper::mapToDTO);
     }
 
-    //    @Override
-    //    public List<UserDTO> getAllUsers() {
-    //        return userRepository.findAll()
-    //                .stream()
-    //                .map(this::mapToDTO)
-    //                .toList();
-    //    }
 
     @Override
     public UserDTO getUserById(Long id) {
@@ -65,7 +55,6 @@ public class UserServiceImpl implements UserService {
         //logger.debug("User with id {} not found", user.getId());
         logger.info("User with id {} not found", user.getId());
         logger.error("Error occurred while processing get user ID", new RuntimeException("user not found"));
-        //return mapToDTO(user);
         logger.info("User ID {} is fetched successfully",user.getId());
         return userMapper.mapToDTO(user);
     }
@@ -86,16 +75,6 @@ public class UserServiceImpl implements UserService {
                 .map(userMapper::mapToDTO);
         //logger.debug("Number of users fetched: {}", tasks.size());
     }
-
-
-//    // Mapper (Entity → DTO)
-//    private UserDTO mapToDTO(User user) {
-//        UserDTO dto = new UserDTO();
-//        dto.setId(user.getId());
-//        dto.setName(user.getName());
-//        dto.setEmail(user.getEmail());
-//        return dto;
-//    }
 
 
 }

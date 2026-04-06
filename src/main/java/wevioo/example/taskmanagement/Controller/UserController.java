@@ -7,11 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-import wevioo.example.taskmanagement.DTO.TaskDTO;
 import wevioo.example.taskmanagement.DTO.UserDTO;
 import wevioo.example.taskmanagement.Service.UserService;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -35,7 +33,7 @@ public class UserController {
         return userService.createUser(userDTO);
     }
 
-    //Get all users
+    // Get all users
     @GetMapping
     @Operation(summary = "Get all user", description = "Get all tasks with sorting and pagination")
     public Page<UserDTO> getUsers(
@@ -46,11 +44,6 @@ public class UserController {
         return userService.getUsersWithPagination(page, size,sortBy);
     }
 
-    //    // Get all users
-    //    @GetMapping
-    //    public List<UserDTO> getAllUsers() {
-    //        return userService.getAllUsers();
-    //    }
 
     // Get user by ID
     @GetMapping("/{id}")

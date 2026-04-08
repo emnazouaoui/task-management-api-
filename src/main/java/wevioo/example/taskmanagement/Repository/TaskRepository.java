@@ -9,13 +9,12 @@ import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    @Query(value = """
-        SELECT * FROM task t 
+    @Query("""
+       SELECT t FROM Task t
         WHERE LOWER(t.title) LIKE LOWER(CONCAT('%', :keyword, '%'))
         OR LOWER(t.description) LIKE LOWER(CONCAT('%', :keyword, '%'))
         OR LOWER(t.status) LIKE LOWER(CONCAT('%', :keyword, '%'))
-        
-    """, nativeQuery = true)
+    """)
 
     List<Task> searchTasks(@Param("keyword") String keyword);
 

@@ -1,15 +1,75 @@
 package wevioo.example.taskmanagement.Service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 import wevioo.example.taskmanagement.DTO.UserDTO;
+import wevioo.example.taskmanagement.Mapper.UserMapper;
+import wevioo.example.taskmanagement.Repository.UserRepository;
+import wevioo.example.taskmanagement.entity.User;
 
-import java.util.List;
 
-public interface UserService {
+@Service
+public class UserService {
 
-    UserDTO createUser(UserDTO userDTO);
-    Page<UserDTO> getUsersWithPagination(int page, int size, String sortBy);
-    UserDTO getUserById(Long id);
-    void deleteUser(Long id);
-    Page<UserDTO> searchUsers(String name, String email, int page, int size);
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
+    }
+
+
+    public UserDTO createUser(UserDTO userDTO) {
+        logger.info("Create new user");
+        User user = new User();
+        user.setName(userDTO.getName());
+        user.setEmail(userDTO.getEmail());
+        User savedUser = userRepository.save(user);
+        logger.info("user created successfully");
+        return userMapper.mapToDTO(savedUser);
+    }
+
+    public Page<UserDTO> getUsersWithPagination(int page, int size, String sortBy) {
+        logger.info("Fetching all users with pagination and sorting");
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        logger.info("Number of users fetched successfully: {}", size);
+        return userRepository.findAll(pageable)
+                .map(userMapper::mapToDTO);
+    }
+
+
+    public UserDTO getUserById(Long id) {
+        logger.info("Fetching user by ID");
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        //logger.debug("User with id {} not found", user.getId());
+        logger.info("User with id {} not found", user.getId());
+        logger.error("Error occurred while processing get user ID", new RuntimeException("user not found"));
+        logger.info("User ID {} is fetched successfully",user.getId());
+        return userMapper.mapToDTO(user);
+    }
+
+    public void deleteUser(Long id) {
+        logger.info("Delete user");
+        userRepository.deleteById(id);
+        logger.info("User deleted successfully with id {}",id);
+    }
+
+    public Page<UserDTO> searchUsers(String name, String email, int page, int size) {
+        logger.info("Search user");
+        Pageable pageable = PageRequest.of(page, size);
+        logger.info("Number of users fetched successfully: {}", size);
+        return userRepository.searchUsers(name, email, pageable)
+                .map(userMapper::mapToDTO);
+        //logger.debug("Number of users fetched: {}", tasks.size());
+    }
+
+
 }

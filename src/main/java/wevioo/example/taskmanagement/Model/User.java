@@ -1,4 +1,4 @@
-package wevioo.example.taskmanagement.entity;
+package wevioo.example.taskmanagement.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +19,7 @@ public class User {
     private long id;
 
     private String name;
+
     private String email;
 
     // Optional

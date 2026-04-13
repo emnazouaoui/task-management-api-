@@ -2,7 +2,7 @@ package wevioo.example.taskmanagement.Mapper;
 
 import org.springframework.stereotype.Component;
 import wevioo.example.taskmanagement.DTO.TaskDTO;
-import wevioo.example.taskmanagement.entity.Task;
+import wevioo.example.taskmanagement.Model.Task;
 
 import java.util.List;
 

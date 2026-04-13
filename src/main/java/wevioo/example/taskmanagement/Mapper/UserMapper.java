@@ -2,7 +2,7 @@ package wevioo.example.taskmanagement.Mapper;
 
 import org.springframework.stereotype.Component;
 import wevioo.example.taskmanagement.DTO.UserDTO;
-import wevioo.example.taskmanagement.entity.User;
+import wevioo.example.taskmanagement.Model.User;
 
 @Component
 public class UserMapper {

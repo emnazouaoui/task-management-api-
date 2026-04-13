@@ -11,9 +11,9 @@ import wevioo.example.taskmanagement.DTO.TaskDTO;
 import wevioo.example.taskmanagement.Mapper.TaskMapper;
 import wevioo.example.taskmanagement.Repository.TaskRepository;
 import wevioo.example.taskmanagement.Repository.UserRepository;
-import wevioo.example.taskmanagement.entity.Task;
-import wevioo.example.taskmanagement.entity.TaskStatus;
-import wevioo.example.taskmanagement.entity.User;
+import wevioo.example.taskmanagement.Model.Task;
+import wevioo.example.taskmanagement.Model.TaskStatus;
+import wevioo.example.taskmanagement.Model.User;
 
 import java.util.List;
 

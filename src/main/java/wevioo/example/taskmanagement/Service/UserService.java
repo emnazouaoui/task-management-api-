@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import wevioo.example.taskmanagement.DTO.UserDTO;
 import wevioo.example.taskmanagement.Mapper.UserMapper;
 import wevioo.example.taskmanagement.Repository.UserRepository;
-import wevioo.example.taskmanagement.entity.User;
+import wevioo.example.taskmanagement.Model.User;
 
 
 @Service

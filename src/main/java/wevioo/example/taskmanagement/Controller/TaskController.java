@@ -57,8 +57,8 @@ public class TaskController {
     // Update task by Id
     @PutMapping("/{id}")
     @Operation(summary = "Update task", description = "Update task: title, description, status")
-    public TaskDTO updateTask(@PathVariable Long id,
-                              @RequestBody TaskDTO taskDTO) {
+    public TaskDTO updateTask(  @PathVariable Long id,
+                                @Valid @RequestBody TaskDTO taskDTO) {
         logger.info("PUT tasks/tasks called");
         return taskService.updateTask(id, taskDTO);
     }
@@ -75,7 +75,7 @@ public class TaskController {
     @PutMapping("/{taskId}/status")
     @Operation(summary = "Update task by Status", description = "Update Task Status (TODO / DOING / DONE)")
     public TaskDTO updateStatus(@PathVariable Long taskId,
-                                @RequestParam String status) {
+                                 @RequestParam String status) {
         logger.info("PUT status/tasks called");
         return taskService.updateStatus(taskId, status);
     }

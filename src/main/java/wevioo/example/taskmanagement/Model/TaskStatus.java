@@ -1,4 +1,4 @@
-package wevioo.example.taskmanagement.entity;
+package wevioo.example.taskmanagement.Model;
 
 public enum TaskStatus {
     TODO,

@@ -3,7 +3,7 @@ package wevioo.example.taskmanagement.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import wevioo.example.taskmanagement.entity.Task;
+import wevioo.example.taskmanagement.Model.Task;
 
 import java.util.List;
 
